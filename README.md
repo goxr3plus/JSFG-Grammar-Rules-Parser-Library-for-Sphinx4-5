@@ -4,7 +4,8 @@ I have got a question. Is that possible to get known, which grammar rule was rec
 
 For example we have the grammar:
 
-   #JSGF V1.0;
+```
+  #JSGF V1.0;
 
   /**
   * JSGF Grammar 
@@ -21,6 +22,7 @@ For example we have the grammar:
                    | thirty | forty | fifty | sixty | seventy | eighty | ninety 
 		           | hundred | thousand | million | billion)+;                   
   public <syntax> = <number>{1} (plus | minus | multiply | division){1} <number>{1}; 
+```
 
 #My answer
 
