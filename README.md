@@ -1,4 +1,4 @@
-# A user in youtube asked me
+### A user in youtube asked me
 
 I have got a question. Is that possible to get known, which grammar rule was recognized? Some variable which returns "feelings" , "syntax" etc. ??
 
@@ -24,11 +24,11 @@ For example we have the grammar:
   public <syntax> = <number>{1} (plus | minus | multiply | division){1} <number>{1}; 
 ```
 
-#My answer
+### My answer
 
 Yes you can do it using the simple library i have written here , just one class :)
 
-#Warning
+### Warning
 
 I have to fix some things like for example if you search for the word `zero` it will return the rule `number` but not the rule `syntax` which obviously contains
 the word `zero` but it has it like `<number>{1}` , so i must add more code to detect this also .
