@@ -41,7 +41,7 @@ the word `zero` but it has it like `<number>{1}` , so i must add more code to de
 ### Example Test Code
 
 
-```
+```JAVA
 import java.io.File;
 import java.util.Arrays;
 import java.util.List;
