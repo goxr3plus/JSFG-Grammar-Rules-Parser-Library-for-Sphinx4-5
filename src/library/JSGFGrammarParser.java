@@ -235,13 +235,13 @@ public class JSGFGrammarParser {
 			
 			//System.out.println("Line is a rule->" + line + "\n"); //TESTING CODE IGNORE IT
 			
-			//-------------------If the rule must [contain all] the given words
+			//Get the rule	with it's definition	
 			if (withDefinitions) {
-				rules.add(line.split("=")[0]); //Get the rule	with it's definition	
+				rules.add(line.split("=")[0]);
 				
-				//---------------If the rule contains can [contain any] of the given words
+				//Get the rule , not with definition
 			} else
-				rules.add("<" + line.split("=")[0].split("\\<")[1]); //Get the rule , not with definition
+				rules.add("<" + line.split("=")[0].split("\\<")[1]);
 		});
 		
 		return rules;
