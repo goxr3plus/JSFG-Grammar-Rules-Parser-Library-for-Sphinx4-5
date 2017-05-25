@@ -5,46 +5,7 @@ I have got a question. Is that possible to get known, which grammar rule was rec
 For example we have the grammar:
 
 ```
-  #JSGF V1.0;
-
-  /**
-  * JSGF Grammar 
-  */
-
-  grammar grammar;
-
-  public <feelings>  = ( how are you | say hello);
-  public <voices>  = ( change to voice one  | change to voice two | change to voice three );
-  public <amazing>  = ( say amazing | what day is today );
-  public <nervous>  = (who is your daddy | obey monster | hey boss);
-  public <number> = ( zero | one | two | three | four | five | six | seven | nine | ten
-                   | eleven | twelve | thirteen | fourteen | fifteen | sixteen | seventeen | eighteen | nineteen | twenty 
-                   | thirty | forty | fifty | sixty | seventy | eighty | ninety 
-		           | hundred | thousand | million | billion)+;                   
-  public <syntax> = <number>{1} (plus | minus | multiply | division){1} <number>{1}; 
-```
----
-
-### My answer
-
-Yes you can do it using the simple library i have written here , just one class :)
-
-### Warning
-
-I have to fix some things like for example if you search for the word `zero` it will return the rule `number` but not the rule `syntax` which obviously contains
-the word `zero` but it has it like `<number>{1}` , so i must add more code to detect this also.
-
-### Here i will add the Youtube tutorial
-
-//here
-
-### Example Test Code
-
-
-```
-import java.io.File;
-import java.net.URISyntaxException;
-import java.nio.file.Paths;
+  import java.io.File;
 import java.util.Arrays;
 import java.util.List;
 
@@ -54,7 +15,16 @@ public class JSGFGrammarParserTester {
 	
 	public static void main(String[] args) {
 		
-		////////////////////////////------------------EXAMPLES--------------///////////////////////////////////////
+		////////////////////////////------------------EXAMPLES Part 1--------------///////////////////////////////////////
+		List<String> rules;
+		
+		rules = JSGFGrammarParser.getAllGrammarRules(JSGFGrammarParserTester.class.getResourceAsStream("grammar1.gram"), false);
+		System.out.println("Grammar Rules , without definitions: " + rules + "\n");
+		
+		rules = JSGFGrammarParser.getAllGrammarRules(JSGFGrammarParserTester.class.getResourceAsStream("grammar1.gram"), true);
+		System.out.println("Grammar Rules , with definitions: " + rules + "\n");
+		
+		////////////////////////////------------------EXAMPLES Part 2--------------///////////////////////////////////////
 		List<String> givenWords;
 		List<String> results;
 		

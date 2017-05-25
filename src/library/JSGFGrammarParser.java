@@ -74,20 +74,7 @@ public class JSGFGrammarParser {
 	 *         ruleMustContainAllWords] of the method
 	 */
 	public static List<String> getRulesContainingWords(File file , List<String> words , boolean containAllWords) {
-		
-		//Read file into stream, try-with-resources
-		try (Stream<String> stream = Files.lines(Paths.get(file.getAbsolutePath()))) {
-			
-			//Collect all the lines to one
-			String oneLine = stream.map(String::trim).collect(Collectors.joining());
-			
-			return parseGrammarLines(oneLine, words, containAllWords);
-			
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-		return new ArrayList<>();
+		return parseGrammarLines(getGrammarAsOneLine(file), words, containAllWords);
 	}
 	
 	/**
@@ -114,7 +101,7 @@ public class JSGFGrammarParser {
 	 *  </code>
 	 * </pre>
 	 * 
-	 * @param absoluteFilePath
+	 * @param inputStream
 	 *        <br>
 	 *        The grammar file as input stream ( in case it is inside a jar file
 	 *        )
@@ -135,6 +122,75 @@ public class JSGFGrammarParser {
 	 *         ruleMustContainAllWords] of the method
 	 */
 	public static List<String> getRulesContainingWords(InputStream inputStream , List<String> words , boolean containAllWords) {
+		return parseGrammarLines(getGrammarAsOneLine(inputStream), words, containAllWords);
+	}
+	
+	/**
+	 * Returns all the grammar rules from the JSGF Grammar File in format [
+	 * <ruleName> ] or [ public/private etc <ruleName> ]
+	 * 
+	 * @param absoluteFilePath
+	 *        <br>
+	 *        The absolute path of the grammar file that you want to read
+	 * @param withDefinitions
+	 *        <br>
+	 *        <b>True</b> It returns the definition along with the rule , for
+	 *        example [ public <ruleName> ]
+	 * @return
+	 * 
+	 */
+	public static List<String> getAllGrammarRules(File absoluteFilePath , boolean withDefinitions) {
+		return parseGrammarLines(getGrammarAsOneLine(absoluteFilePath), withDefinitions);
+	}
+	
+	/**
+	 * Returns all the grammar rules from the JSGF Grammar File
+	 * 
+	 * @param inputStream
+	 *        <br>
+	 *        The grammar file as input stream ( in case it is inside a jar
+	 *        file)
+	 * @param withDefinitions
+	 *        <br>
+	 *        <b>True</b> It returns the definition along with the rule , for
+	 *        example [ public <ruleName> ]
+	 * @return
+	 */
+	public static List<String> getAllGrammarRules(InputStream inputStream , boolean withDefinitions) {
+		return parseGrammarLines(getGrammarAsOneLine(inputStream), withDefinitions);
+	}
+	
+	/**
+	 * Returns the JSGF grammar as one line
+	 * 
+	 * @param file
+	 * @return Returns the JSGF grammar as one line
+	 */
+	private static String getGrammarAsOneLine(File file) {
+		
+		//Read file into stream, try-with-resources
+		try (Stream<String> stream = Files.lines(Paths.get(file.getAbsolutePath()))) {
+			
+			//Collect all the lines to one
+			String oneLine = stream.map(String::trim).collect(Collectors.joining());
+			
+			return oneLine;
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		//In case of error
+		return "";
+	}
+	
+	/**
+	 * Returns the JSGF grammar as one line
+	 * 
+	 * @param inputStream
+	 * @return Returns the JSGF grammar as one line
+	 */
+	private static String getGrammarAsOneLine(InputStream inputStream) {
 		
 		//Read file into stream, try-with-resources
 		try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
@@ -145,13 +201,50 @@ public class JSGFGrammarParser {
 			while ( ( line = reader.readLine() ) != null)
 				oneLine.append(line.trim());
 			
-			return parseGrammarLines(oneLine.toString(), words, containAllWords);
-			
+			return oneLine.toString();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		
-		return new ArrayList<>();
+		//In case of error
+		return "";
+	}
+	
+	/**
+	 * Parses the grammar files to detect all the rules [ optionally and their
+	 * definitions based on the second parameter ]
+	 * 
+	 * @param oneLine
+	 * @param withDefinitions
+	 * @return A List containing all the rules [ optionally and their
+	 *         definitions based on the second parameter ]
+	 */
+	private static List<String> parseGrammarLines(String oneLine , boolean withDefinitions) {
+		//-------------Print the line - For testing----------------------
+		//System.out.println(oneLine);
+		
+		//Store the rules containing this word inside an ArrayList		
+		ArrayList<String> rules = new ArrayList<>();
+		
+		//Split by ; and go
+		Arrays.asList(oneLine.split(";")).stream().forEach(line -> {
+			
+			//Check if line is a rule 
+			if (!line.contains("<") || !line.contains(">") || !line.contains("="))
+				return;
+			
+			//System.out.println("Line is a rule->" + line + "\n"); //TESTING CODE IGNORE IT
+			
+			//-------------------If the rule must [contain all] the given words
+			if (withDefinitions) {
+				rules.add(line.split("=")[0]); //Get the rule	with it's definition	
+				
+				//---------------If the rule contains can [contain any] of the given words
+			} else
+				rules.add("<" + line.split("=")[0].split("\\<")[1]); //Get the rule , not with definition
+		});
+		
+		return rules;
 	}
 	
 	/*

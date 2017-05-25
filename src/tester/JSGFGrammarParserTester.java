@@ -1,8 +1,6 @@
 package tester;
 
 import java.io.File;
-import java.net.URISyntaxException;
-import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
 
@@ -12,7 +10,16 @@ public class JSGFGrammarParserTester {
 	
 	public static void main(String[] args) {
 		
-		////////////////////////////------------------EXAMPLES--------------///////////////////////////////////////
+		////////////////////////////------------------EXAMPLES Part 1--------------///////////////////////////////////////
+		List<String> rules;
+		
+		rules = JSGFGrammarParser.getAllGrammarRules(JSGFGrammarParserTester.class.getResourceAsStream("grammar1.gram"), false);
+		System.out.println("Grammar Rules , without definitions: " + rules + "\n");
+		
+		rules = JSGFGrammarParser.getAllGrammarRules(JSGFGrammarParserTester.class.getResourceAsStream("grammar1.gram"), true);
+		System.out.println("Grammar Rules , with definitions: " + rules + "\n");
+		
+		////////////////////////////------------------EXAMPLES Part 2--------------///////////////////////////////////////
 		List<String> givenWords;
 		List<String> results;
 		
