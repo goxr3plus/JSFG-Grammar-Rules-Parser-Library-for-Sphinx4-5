@@ -34,7 +34,7 @@ Yes you can do it using the simple library i have written here , just one class 
 I have to fix some things like for example if you search for the word `zero` it will return the rule `number` but not the rule `syntax` which obviously contains
 the word `zero` but it has it like `<number>{1}` , so i must add more code to detect this also.
 
-### Here i will add the Youtube tutorial
+### Youtube tutorial
 
 https://www.youtube.com/watch?v=-ZN7AQz_wPI
 
