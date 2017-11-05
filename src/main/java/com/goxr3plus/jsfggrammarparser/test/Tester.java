@@ -1,22 +1,22 @@
-package tester;
+package main.java.com.goxr3plus.jsfggrammarparser.test;
 
 import java.io.File;
 import java.util.Arrays;
 import java.util.List;
 
-import library.JSGFGrammarParser;
+import main.java.com.goxr3plus.jsfggrammarparser.parser.JSGFGrammarParser;
 
-public class JSGFGrammarParserTester {
+public class Tester {
 	
 	public static void main(String[] args) {
 		
 		////////////////////////////------------------EXAMPLES Part 1--------------///////////////////////////////////////
 		List<String> rules;
 		
-		rules = JSGFGrammarParser.getAllGrammarRules(JSGFGrammarParserTester.class.getResourceAsStream("grammar1.gram"), false);
+		rules = JSGFGrammarParser.getAllGrammarRules(Tester.class.getResourceAsStream("grammar1.gram"), false);
 		System.out.println("Grammar Rules , without definitions: " + rules + "\n");
 		
-		rules = JSGFGrammarParser.getAllGrammarRules(JSGFGrammarParserTester.class.getResourceAsStream("grammar1.gram"), true);
+		rules = JSGFGrammarParser.getAllGrammarRules(Tester.class.getResourceAsStream("grammar1.gram"), true);
 		System.out.println("Grammar Rules , with definitions: " + rules + "\n");
 		
 		////////////////////////////------------------EXAMPLES Part 2--------------///////////////////////////////////////
@@ -27,12 +27,12 @@ public class JSGFGrammarParserTester {
 		
 		//Example 1 -- The grammar is in the same resource package
 		givenWords = Arrays.asList("how are you", "say hello");
-		results = JSGFGrammarParser.getRulesContainingWords(JSGFGrammarParserTester.class.getResourceAsStream("grammar1.gram"), givenWords, false);
+		results = JSGFGrammarParser.getRulesContainingWords(Tester.class.getResourceAsStream("grammar1.gram"), givenWords, false);
 		printResults(givenWords, results);
 		
 		//Example 2 -- The grammar is in the folder RESOURCES/grammars/grammar2.gram	
 		givenWords = Arrays.asList("six");
-		results = JSGFGrammarParser.getRulesContainingWords(JSGFGrammarParserTester.class.getResourceAsStream("/grammars/grammar2.gram"), givenWords, true);
+		results = JSGFGrammarParser.getRulesContainingWords(Tester.class.getResourceAsStream("/grammars/grammar2.gram"), givenWords, true);
 		printResults(givenWords, results);
 		
 		//----------------------If the grammar is outside the jar file-----------------------
@@ -63,8 +63,8 @@ public class JSGFGrammarParserTester {
 	/**
 	 * Print the results
 	 * 
-	 * @param givenWords
-	 * @param results
+	 * @param givenWords The words Given
+	 * @param results The Results
 	 */
 	private static void printResults(List<String> givenWords , List<String> results) {
 		System.out.println("\nGiven words : \"" + givenWords + "\"\nGrammar Rules containing them :-> " + results);

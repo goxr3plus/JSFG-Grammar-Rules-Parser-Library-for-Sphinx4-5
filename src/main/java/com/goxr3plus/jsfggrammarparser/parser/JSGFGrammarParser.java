@@ -1,4 +1,4 @@
-package library;
+package main.java.com.goxr3plus.jsfggrammarparser.parser;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -19,8 +19,7 @@ import java.util.stream.Stream;
  * <br>
  * Please see: <a href="https://www.w3.org/TR/jsgf/"> Link </a>
  * 
- * @author GOXR3PLUS
- *         [[SuppressWarningsSpartan]]
+ * @author GOXR3PLUS [[SuppressWarningsSpartan]]
  */
 public class JSGFGrammarParser {
 	
@@ -40,9 +39,8 @@ public class JSGFGrammarParser {
 	 * 
 	 * <br>
 	 * Big Problem is that ->it doesn't check if the rules contains other rules
-	 * that contain the
-	 * given
-	 * words , so this rule contains the given words , for example :
+	 * that contain the given words , so this rule contains the given words ,
+	 * for example :
 	 * 
 	 * <pre>
 	 *  <code>
@@ -55,23 +53,22 @@ public class JSGFGrammarParser {
 	 * </pre>
 	 * 
 	 * @param absoluteFilePath
-	 *        <br>
-	 *        The absolute path of the grammar file that you want to read
+	 *            <br>
+	 *            The absolute path of the grammar file that you want to read
 	 * @param words
-	 *        <br>
-	 *        A list of words that you want to check and get the
-	 *        rules containing them
+	 *            <br>
+	 *            A list of words that you want to check and get the rules
+	 *            containing them
 	 * @param containAllWords
-	 *        <br>
-	 *        <b>True</b> if you want the rule to contain all the given words
-	 *        <br>
-	 *        <b>False</b> if you want the rule to contain any of the given
-	 *        words
-	 * @return ArrayList
-	 *         <br>
-	 *         of the rules that are containing [all or some ]
-	 *         of the words given based on the third parameter [
-	 *         ruleMustContainAllWords] of the method
+	 *            <br>
+	 *            <b>True</b> if you want the rule to contain all the given
+	 *            words <br>
+	 *            <b>False</b> if you want the rule to contain any of the given
+	 *            words
+	 * @return ArrayList <br>
+	 *         of the rules that are containing [all or some ] of the words
+	 *         given based on the third parameter [ ruleMustContainAllWords] of
+	 *         the method
 	 */
 	public static List<String> getRulesContainingWords(File file , List<String> words , boolean containAllWords) {
 		return parseGrammarLines(getGrammarAsOneLine(file), words, containAllWords);
@@ -87,9 +84,8 @@ public class JSGFGrammarParser {
 	 * 
 	 * <br>
 	 * Big Problem is that ->it doesn't check if the rules contains other rules
-	 * that contain the
-	 * given
-	 * words , so this rule contains the given words , for example :
+	 * that contain the given words , so this rule contains the given words ,
+	 * for example :
 	 * 
 	 * <pre>
 	 *  <code>
@@ -102,24 +98,23 @@ public class JSGFGrammarParser {
 	 * </pre>
 	 * 
 	 * @param inputStream
-	 *        <br>
-	 *        The grammar file as input stream ( in case it is inside a jar file
-	 *        )
+	 *            <br>
+	 *            The grammar file as input stream ( in case it is inside a jar
+	 *            file )
 	 * @param words
-	 *        <br>
-	 *        A list of words that you want to check and get the
-	 *        rules containing them
+	 *            <br>
+	 *            A list of words that you want to check and get the rules
+	 *            containing them
 	 * @param containAllWords
-	 *        <br>
-	 *        <b>True</b> if you want the rule to contain all the given words
-	 *        <br>
-	 *        <b>False</b> if you want the rule to contain any of the given
-	 *        words
-	 * @return ArrayList
-	 *         <br>
-	 *         of the rules that are containing [all or some ]
-	 *         of the words given based on the third parameter [
-	 *         ruleMustContainAllWords] of the method
+	 *            <br>
+	 *            <b>True</b> if you want the rule to contain all the given
+	 *            words <br>
+	 *            <b>False</b> if you want the rule to contain any of the given
+	 *            words
+	 * @return ArrayList <br>
+	 *         of the rules that are containing [all or some ] of the words
+	 *         given based on the third parameter [ ruleMustContainAllWords] of
+	 *         the method
 	 */
 	public static List<String> getRulesContainingWords(InputStream inputStream , List<String> words , boolean containAllWords) {
 		return parseGrammarLines(getGrammarAsOneLine(inputStream), words, containAllWords);
@@ -127,16 +122,18 @@ public class JSGFGrammarParser {
 	
 	/**
 	 * Returns all the grammar rules from the JSGF Grammar File in format [
-	 * <ruleName> ] or [ public/private etc <ruleName> ]
+	 * (ruleName) ] or [ public/private etc (ruleName) ]
 	 * 
 	 * @param absoluteFilePath
-	 *        <br>
-	 *        The absolute path of the grammar file that you want to read
+	 *            <br>
+	 *            The absolute path of the grammar file that you want to read
 	 * @param withDefinitions
-	 *        <br>
-	 *        <b>True</b> It returns the definition along with the rule , for
-	 *        example [ public <ruleName> ]
-	 * @return
+	 *            <br>
+	 *            <b>True</b> It returns the definition along with the rule ,
+	 *            for example public (ruleName)
+	 * @return Returns all the grammar rules from the JSGF Grammar File in
+	 *         format [ (ruleName) ] or [ public/private etc (ruleName) ]
+	 * 
 	 * 
 	 */
 	public static List<String> getAllGrammarRules(File absoluteFilePath , boolean withDefinitions) {
@@ -147,14 +144,14 @@ public class JSGFGrammarParser {
 	 * Returns all the grammar rules from the JSGF Grammar File
 	 * 
 	 * @param inputStream
-	 *        <br>
-	 *        The grammar file as input stream ( in case it is inside a jar
-	 *        file)
+	 *            <br>
+	 *            The grammar file as input stream ( in case it is inside a jar
+	 *            file)
 	 * @param withDefinitions
-	 *        <br>
-	 *        <b>True</b> It returns the definition along with the rule , for
-	 *        example [ public <ruleName> ]
-	 * @return
+	 *            <br>
+	 *            <b>True</b> It returns the definition along with the rule ,
+	 *            for example public (ruleName)
+	 * @return Returns all the grammar rules from the JSGF Grammar File
 	 */
 	public static List<String> getAllGrammarRules(InputStream inputStream , boolean withDefinitions) {
 		return parseGrammarLines(getGrammarAsOneLine(inputStream), withDefinitions);
@@ -172,9 +169,7 @@ public class JSGFGrammarParser {
 		try (Stream<String> stream = Files.lines(Paths.get(file.getAbsolutePath()))) {
 			
 			//Collect all the lines to one
-			String oneLine = stream.map(String::trim).collect(Collectors.joining());
-			
-			return oneLine;
+			return stream.map(String::trim).collect(Collectors.joining());
 			
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -221,7 +216,7 @@ public class JSGFGrammarParser {
 	 */
 	private static List<String> parseGrammarLines(String oneLine , boolean withDefinitions) {
 		//-------------Print the line - For testing----------------------
-		//System.out.println(oneLine);
+		//System.out.println(oneLine)
 		
 		//Store the rules containing this word inside an ArrayList		
 		ArrayList<String> rules = new ArrayList<>();
@@ -248,26 +243,19 @@ public class JSGFGrammarParser {
 	}
 	
 	/*
-	 * @param words
-	 * <br>
-	 * A list of words that you want to check and get the
+	 * @param words <br> A list of words that you want to check and get the
 	 * rules containing them
-	 * @param containAllWords
-	 * <br>
-	 * <b>True</b> if you want the rule to contain all the given words
-	 * <br>
-	 * <b>False</b> if you want the rule to contain any of the given
-	 * words
-	 * @return ArrayList
-	 * <br>
-	 * of the rules that are containing [all or some ]
-	 * of the words given based on the third parameter [
-	 * ruleMustContainAllWords] of the method
+	 * @param containAllWords <br> <b>True</b> if you want the rule to contain
+	 * all the given words <br> <b>False</b> if you want the rule to contain any
+	 * of the given words
+	 * @return ArrayList <br> of the rules that are containing [all or some ] of
+	 * the words given based on the third parameter [ ruleMustContainAllWords]
+	 * of the method
 	 */
 	private static List<String> parseGrammarLines(String oneLine , List<String> words , boolean containAllWords) {
 		
 		//-------------Print the line - For testing----------------------
-		//System.out.println(oneLine);
+		//System.out.println(oneLine)
 		
 		//Store the rules containing this word inside an ArrayList		
 		ArrayList<String> rules = new ArrayList<>();
