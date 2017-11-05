@@ -2,41 +2,6 @@
 
 I have got a question. Is that possible to get known, which grammar rule was recognized? Some variable which returns "feelings" , "syntax" etc. ??
 
-## --Maven Build--
-
-### Maven Clean Package [ With Javadocs produced ]
-
-```mvn clean package``` 
-
-### Maven Clean Package [ No Javadocs produced ]
-
-```mvn -Dmaven.javadoc.skip=true clean package``` 
-
-## -- Add it to your project using JitPack --
-
-https://jitpack.io/private#goxr3plus/JSFG-Grammar-Rules-Parser-Library-for-Sphinx4-5
-
-### Step 1. Add the JitPack repository to your build file
-``` XML
-<repositories>
-	<repository>
-	   <id>jitpack.io</id>
-	   <url>https://jitpack.io</url>
-        </repository>
-</repositories>
-```
-
-###  Step 2. Add the dependency
-``` XML
-<dependency>
-   <groupId>com.github.goxr3plus</groupId>
-   <artifactId>JSFG-Grammar-Rules-Parser-Library-for-Sphinx4-5</artifactId>
-   <version>V1.0.0</version>
-</dependency>
-```
-
---- 
-
 ## -- For example we have the grammar --
 
 ```
@@ -72,6 +37,43 @@ the word `zero` but it has it like `<number>{1}` , so i must add more code to de
 ### Youtube tutorial
 
 https://www.youtube.com/watch?v=-ZN7AQz_wPI
+
+---
+
+## --Maven Build--
+
+### Maven Clean Package [ With Javadocs produced ]
+
+```mvn clean package``` 
+
+### Maven Clean Package [ No Javadocs produced ]
+
+```mvn -Dmaven.javadoc.skip=true clean package``` 
+
+## -- Add it to your project using JitPack --
+
+https://jitpack.io/private#goxr3plus/JSFG-Grammar-Rules-Parser-Library-for-Sphinx4-5
+
+### Step 1. Add the JitPack repository to your build file
+``` XML
+<repositories>
+	<repository>
+	   <id>jitpack.io</id>
+	   <url>https://jitpack.io</url>
+        </repository>
+</repositories>
+```
+
+###  Step 2. Add the dependency
+``` XML
+<dependency>
+   <groupId>com.github.goxr3plus</groupId>
+   <artifactId>JSFG-Grammar-Rules-Parser-Library-for-Sphinx4-5</artifactId>
+   <version>V1.0.0</version>
+</dependency>
+```
+
+---
 
 ### Example Test Code
 
