@@ -12,9 +12,9 @@ I have got a question. Is that possible to get known, which grammar rule was rec
 
 ```mvn -Dmaven.javadoc.skip=true clean package``` 
 
-### Add it to your project using JitPack :
+## -- Add it to your project using JitPack --
 
-https://jitpack.io/private#goxr3plus/java-stream-player
+https://jitpack.io/private#goxr3plus/JSFG-Grammar-Rules-Parser-Library-for-Sphinx4-5
 
 ### Step 1. Add the JitPack repository to your build file
 ``` XML
@@ -30,12 +30,14 @@ https://jitpack.io/private#goxr3plus/java-stream-player
 ``` XML
 <dependency>
    <groupId>com.github.goxr3plus</groupId>
-   <artifactId>java-google-speech-api</artifactId>
-   <version>V2.1</version> 
+   <artifactId>JSFG-Grammar-Rules-Parser-Library-for-Sphinx4-5</artifactId>
+   <version>V1.0.0</version>
 </dependency>
 ```
 
-For example we have the grammar:
+--- 
+
+## -- For example we have the grammar --
 
 ```
   #JSGF V1.0;
