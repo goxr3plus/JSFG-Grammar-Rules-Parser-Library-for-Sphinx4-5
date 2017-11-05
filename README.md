@@ -2,6 +2,39 @@
 
 I have got a question. Is that possible to get known, which grammar rule was recognized? Some variable which returns "feelings" , "syntax" etc. ??
 
+## --Maven Build--
+
+### Maven Clean Package [ With Javadocs produced ]
+
+```mvn clean package``` 
+
+### Maven Clean Package [ No Javadocs produced ]
+
+```mvn -Dmaven.javadoc.skip=true clean package``` 
+
+### Add it to your project using JitPack :
+
+https://jitpack.io/private#goxr3plus/java-stream-player
+
+### Step 1. Add the JitPack repository to your build file
+``` XML
+<repositories>
+	<repository>
+	   <id>jitpack.io</id>
+	   <url>https://jitpack.io</url>
+        </repository>
+</repositories>
+```
+
+###  Step 2. Add the dependency
+``` XML
+<dependency>
+   <groupId>com.github.goxr3plus</groupId>
+   <artifactId>java-google-speech-api</artifactId>
+   <version>V2.1</version> 
+</dependency>
+```
+
 For example we have the grammar:
 
 ```
