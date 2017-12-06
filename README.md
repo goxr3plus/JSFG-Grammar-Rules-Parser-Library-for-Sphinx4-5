@@ -4,7 +4,7 @@ I have got a question. Is that possible to get known, which grammar rule was rec
 
 ## -- For example we have the grammar --
 
-```
+``` XML 
   #JSGF V1.0;
 
   /**
